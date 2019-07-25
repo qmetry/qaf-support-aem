@@ -98,7 +98,7 @@ public interface CoralLocators {
 
 		ICON(ICON_LOC_KEY, "{\"locator\":\"CQ=coral-icon\",\"desc\":\"Icon\"}"),
 
-		ACTION_BAR(ACTION_BAR_LOC_KEY, "{\"locator\":\"CQ=action-bar\",\"desc\":\"Action Bar\"}"),
+		ACTION_BAR(ACTION_BAR_LOC_KEY, "{\"locator\":\"CQ=action-bar,coral-actionbar\",\"desc\":\"Action Bar\"}"),
 		
 		WAIT_INDICATOR(WAIT_INDICATOR_LOC_KEY, "{\"locator\":\"CQ=coral-wait:visible\",\"desc\":\"Wait indicator\"}"),
 

@@ -67,4 +67,8 @@ public class ActionBar<T extends ActionBarItem<T>> extends Container {
 		return actionItem;
 	}
 	
+	public void perform(T t) {
+		getActionItem(t).click();
+	}
+	
 }

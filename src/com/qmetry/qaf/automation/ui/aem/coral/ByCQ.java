@@ -36,8 +36,8 @@ import org.openqa.selenium.remote.RemoteWebElement;
  */
 public class ByCQ extends By {
 
-	private static final String CORAL_QUERY = "var lst = [];  $(arguments[0]).each( function(i,item) { lst.push(item); } ); return lst;";
-	private static final String CORAL_CHILD_QUERY = "var lst = [];  $(arguments[0]).find(arguments[1]).each( function(i,item) { lst.push(item); } ); return lst;";
+	private static final String CORAL_QUERY = "var lst = []; var d=document||window.document; var w= window.parent||window; $=w.$||$; $(d).find(arguments[0]).each( function(i,item) { lst.push(item); } ); return lst;";
+	private static final String CORAL_CHILD_QUERY = "var lst = [];var d=document||window.document; var w= window.parent||window; $=w.$||$;  $(d).find(arguments[0]).find(arguments[1]).each( function(i,item) { lst.push(item); } ); return lst;";
 
 	private static final String TXT_EQ_EXT = "$.expr[':'].textEquals = function(el, i, m) {" + "    var searchText = m[3];"
 			+ "    var match = $(el).text().trim().match(\"^\" + searchText + \"$\");"

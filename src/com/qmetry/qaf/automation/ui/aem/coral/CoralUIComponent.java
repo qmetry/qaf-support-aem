@@ -22,9 +22,19 @@
  *******************************************************************************/
 package com.qmetry.qaf.automation.ui.aem.coral;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.Response;
+
+import com.qmetry.qaf.automation.ui.webdriver.CommandTracker;
 import com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebDriver;
 import com.qmetry.qaf.automation.ui.webdriver.QAFExtendedWebElement;
 import com.qmetry.qaf.automation.ui.webdriver.QAFWebComponent;
+import com.qmetry.qaf.automation.util.LocatorUtil;
 
 /**
  * Represents <a href=
@@ -49,8 +59,32 @@ public class CoralUIComponent extends QAFWebComponent {
 	}
 
 	@Override
+	public String getId() {
+		if (id == null || id == "-1") {
+			beforeCommand(this, new CommandTracker(DriverCommand.FIND_ELEMENT, new HashMap<String, Object>()));
+		}
+		return super.getId();
+	}
+	
+
+	protected Response execute(String command, Map<String, ?> parameters) {
+		getId();
+		return super.execute(command, parameters);
+	}
+
+	@Override
 	protected void initLoc(String locator) {
-		super.initLoc(CoralLocators.Repository.get(locator));
+		this.locator = locator;
+	}
+
+	protected By getBy() {
+		// make locator transformation lazy so that can consider default values
+		if ((null == by) && StringUtils.isNotBlank(this.locator)) {
+			super.initLoc(CoralLocators.Repository.get(this.locator));
+			by = LocatorUtil.getBy(this.locator);
+		}
+
+		return by;
 	}
 
 	public Object getProperty(String property) {
@@ -59,5 +93,14 @@ public class CoralUIComponent extends QAFWebComponent {
 
 	public void setProperty(String property, Object value) {
 		executeScript("get('" + property + "'," + value + ");");
+	}
+
+	public QAFExtendedWebElement getParentElement(){
+		return parentElement;
+	}
+	
+	static {
+		//register locator strategy if not registered yet...
+		System.setProperty("CQ", "com.qmetry.qaf.automation.ui.aem.coral.ByCQ");
 	}
 }

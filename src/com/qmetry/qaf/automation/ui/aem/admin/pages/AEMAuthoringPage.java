@@ -22,6 +22,7 @@
  *******************************************************************************/
 package com.qmetry.qaf.automation.ui.aem.admin.pages;
 
+import static com.qmetry.qaf.automation.core.ConfigurationManager.getBundle;
 import static com.qmetry.qaf.automation.ui.aem.admin.utils.AEMAuthonicator.getToken;
 import static com.qmetry.qaf.automation.ui.aem.coral.CoralLocators.WAIT_INDICATOR_LOC_KEY;
 
@@ -44,17 +45,17 @@ import com.qmetry.qaf.automation.ui.webdriver.QAFWebElement;
  */
 public class AEMAuthoringPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 	protected String pageUrl;
-	protected  PageRepository p = new PageRepository();
 
 	@FindBy(locator = WAIT_INDICATOR_LOC_KEY)
 	private QAFWebElement waitIndicator;
 
 	public AEMAuthoringPage() {
-		this.pageUrl = pageProps.getString("env.aem.baseurl");
+		this(getBundle().getString("env.aem.baseurl"));
 	}
 
 	public AEMAuthoringPage(String pageUrl) {
 		this.pageUrl = AEMEnvironment.BASE_URL.value() + pageUrl;
+		PageRepository.setDefaults();
 	}
 
 	public Dialog getDialog() {
