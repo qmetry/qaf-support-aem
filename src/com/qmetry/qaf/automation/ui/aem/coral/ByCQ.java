@@ -36,12 +36,15 @@ import org.openqa.selenium.remote.RemoteWebElement;
  */
 public class ByCQ extends By {
 
-	private static final String CORAL_QUERY = "var lst = []; var d=document||window.document; var w= window.parent||window; $=w.$||$; $(d).find(arguments[0]).each( function(i,item) { lst.push(item); } ); return lst;";
-	private static final String CORAL_CHILD_QUERY = "var lst = [];var d=document||window.document; var w= window.parent||window; $=w.$||$;  $(d).find(arguments[0]).find(arguments[1]).each( function(i,item) { lst.push(item); } ); return lst;";
+	private static final String CORAL_QUERY_PREFIX = "var lst = []; var d=document||window.document; var w= window.parent||window; $=w.$||$; ";
+	private static final String CORAL_QUERY = "$(d).find(arguments[0]).each( function(i,item) { lst.push(item); } ); return lst;";
+	private static final String CORAL_CHILD_QUERY = "$(d).find(arguments[0]).find(arguments[1]).each( function(i,item) { lst.push(item); } ); return lst;";
 
-	private static final String TXT_EQ_EXT = "$.expr[':'].textEquals = function(el, i, m) {" + "    var searchText = m[3];"
+	private static final String TXT_EQ_EXT = "$.expr[':'].textEquals = function(el, i, m) {" 
+			+ "    var searchText = m[3];"
 			+ "    var match = $(el).text().trim().match(\"^\" + searchText + \"$\");"
-			+ "    return match && match.length > 0;" + "}";
+			+ "    return match && match.length > 0;"
+			+ "}";
 	
 	private String selector;
 	private String ext="";
@@ -70,8 +73,9 @@ public class ByCQ extends By {
 	}
 	
 	private void initExt() {
+		ext=CORAL_QUERY_PREFIX;
 		if(selector.contains(":textEquals")) {
-			ext = TXT_EQ_EXT;
+			ext = CORAL_QUERY_PREFIX  + TXT_EQ_EXT;
 		}
 	}
 }

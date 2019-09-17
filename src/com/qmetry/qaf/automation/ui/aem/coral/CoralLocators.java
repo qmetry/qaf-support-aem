@@ -71,7 +71,7 @@ public interface CoralLocators {
 
 		DIALOG(DIALOG_LOC_KEY, "{\"locator\":\"CQ=coral-dialog:visible\",\"desc\":\"Dialog\"}"),
 
-		DIALOG_CLOSE_BTN(DIALOG_CLOSE_BTN_LOC_KEY, "{\"locator\":\"CQ=[coral-close]:visible\",\"desc\":\"Dialog\"}"),
+		DIALOG_CLOSE_BTN(DIALOG_CLOSE_BTN_LOC_KEY, "{\"locator\":\"CQ=[coral-close]:visible,[aria-label=close]:visible\",\"desc\":\"Dialog\"}"),
 
 		// https://helpx.adobe.com/experience-manager/6-3/sites/developing/using/reference-materials/coral-ui/coralui3/Coral.Table.html
 
