@@ -70,7 +70,7 @@ public class AEMAuthonicator {
 	
 
 	public static void singOut() {
-		CommonStep.get("/system/sling/logout.html");
+		CommonStep.get(AEMEnvironment.BASE_URL.value()+"/system/sling/logout.html");
 		clearToken();
 	}
 }

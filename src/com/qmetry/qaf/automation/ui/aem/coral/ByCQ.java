@@ -43,7 +43,7 @@ public class ByCQ extends By {
 			+ "    var searchText = m[3];"
 			+ "    var match = $(el).text().trim().match(\"^\" + searchText + \"$\");"
 			+ "    return match && match.length > 0;"
-			+ "}";
+			+ "};";
 	
 	private String selector;
 	private String ext="";

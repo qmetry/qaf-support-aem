@@ -97,7 +97,7 @@ public class AEMAuthoringPage extends WebDriverBaseTestPage<WebDriverTestPage> {
 		}
 
 		CoralUIComponent closeBtn = new CoralUIComponent(CoralLocators.Repository.DIALOG_CLOSE_BTN.locator());
-		if (closeBtn.isPresent()) {
+		if (closeBtn.isPresent() && closeBtn.isDisplayed()) {
 			closeBtn.click();
 		}
 	}

@@ -57,13 +57,14 @@ public class CoralUIComponent extends QAFWebComponent {
 		super(parent, locator);
 	}
 
-	@Override
-	public String getId() {
-		if (id == null || id == "-1") {
-			beforeCommand(this, new CommandTracker(DriverCommand.FIND_ELEMENT, new HashMap<String, Object>()));
-		}
-		return super.getId();
-	}
+// no need with qaf 2.1.15	
+//	@Override
+//	public String getId() {
+//		if (id == null || id == "-1") {
+//			beforeCommand(this, new CommandTracker(DriverCommand.FIND_ELEMENT, new HashMap<String, Object>()));
+//		}
+//		return super.getId();
+//	}
 	
 
 	protected Response execute(String command, Map<String, ?> parameters) {
