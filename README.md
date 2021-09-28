@@ -1,7 +1,7 @@
-# qaf-aem-support
+# qaf-support-aem
 AEM CoralUI functional test automation support
 
-**qaf-aem-support** provides inbuilt `coral-ui` components and a custom locator strategy to locate element through coral-query. 
+**qaf-support-aem** provides inbuilt `coral-ui` components and a custom locator strategy to locate element through coral-query. 
 
 ## Testing AEM custom components
 For users who want to test their custom components before use in production, this library also provides AEM authoring pages implementation. In most of the cases following are AEM authoring functionality required to test AEM custom components:
