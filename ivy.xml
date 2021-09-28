@@ -4,16 +4,22 @@
 	xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
 	<info organisation="com.qmetry" module="qaf-support-aem" status="integration">
 	</info>
+		<configurations>
+        <conf name="compile"  description="Required to compile application"/>
+        <conf name="runtime"  description="Additional run-time dependencies" extends="compile"/>
+        <conf name="test"     description="Required for test only" extends="runtime"/>
+        <conf name="provided" description="Needed for compile, but will be present on the target platform."/>
+    </configurations>
 
 	<dependencies>
-		<dependency org="com.qmetry" name="qaf" rev="latest.integration" />
-		<dependency org="com.qmetry" name="qaf-support" rev="latest.integration" />
-		<dependency org="com.qmetry" name="qaf-support-ws" rev="latest.integration" />
+		<dependency org="com.qmetry" name="qaf" rev="${release.num}" conf="compile->default" />
+		<dependency org="com.qmetry" name="qaf-support" rev="${release.num}" conf="compile->default" />
+		<dependency org="com.qmetry" name="qaf-support-ws" rev="${release.num}" conf="compile->default" />
 		<dependency org="com.adobe.cq" name="cq-testing-clients-65" rev="latest.integration" />
 		<dependency org="org.slf4j" name="slf4j-simple" rev="1.7.5" />
 		<dependency org="ch.qos.logback" name="logback-core" rev="1.2.3"/>
 		
-		<dependency org="org.aspectj" name="aspectjtools" rev="1.8.5">
+		<dependency org="org.aspectj" name="aspectjtools" rev="1.9.5">
 			<artifact name="aspectjtools" type="jar"></artifact>
 		</dependency>
 	</dependencies>
