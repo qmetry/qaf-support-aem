@@ -77,7 +77,7 @@ public class CoralUIComponent extends QAFWebComponent {
 		this.locator = locator;
 	}
 
-	protected By getBy() {
+	public By getBy() {
 		// make locator transformation lazy so that can consider default values
 		if ((null == by) && StringUtils.isNotBlank(this.locator)) {
 			super.initLoc(CoralLocators.Repository.get(this.locator));
